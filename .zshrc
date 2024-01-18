@@ -73,7 +73,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump you-should-use zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -121,6 +121,14 @@ alias lazydocker='lazydocker'
 alias duf='duf'
 # neofetch 查看系统信息
 alias neofetch='neofetch'
+# tmux 重载配置文件
+alias tmuxsource='cp ~/.config/tmux-config/.tmux.conf.local ~/.config/tmux/tmux.conf.local && tmux source-file ~/.config/tmux/tmux.conf'
+# yabai 命令
+alias yabaistop='yabai --stop-service'
+alias yabaistart='yabai --start-service'
+# skhd 命令
+alias skhdstop='skhd --stop-service'
+alias skhdstart='skhd --start-service'
 
 # homebrew 安装的软件的环境变量
 eval export HOMEBREW_PREFIX="/opt/homebrew";
@@ -130,3 +138,17 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
 export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 
+
+# pnpm
+export PNPM_HOME="/Users/ly/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+
+# pnpm end
